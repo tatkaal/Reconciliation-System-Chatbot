@@ -1,0 +1,48 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- deny
+- affirm
+- after_greet
+- about_bot
+- settle_commission_infodevelopers
+- compose_message
+- approve_pin_request
+- limit_inter_bank_transfer
+- publish_document
+- transaction_from_mobile
+- change_pin_mobile_number
+- compose_features
+- verify_commission_amount
+- register_customer
+- close_mobile_banking_service
+- send_bulk_message
+- greeting:
+    use_entities: []
+- goodbye
+- out_of_scope
+entities:
+- feature
+actions:
+- action_about
+- action_after_affirm
+- action_after_deny
+- action_after_greet
+- action_approve_pin_request
+- action_change_pin_mobile_number
+- action_close_mobile_banking_service
+- action_compose_features
+- action_compose_message
+- action_goodbye
+- action_greeting
+- action_handle_fallback
+- action_limit_inter_bank_transfer
+- action_out_of_scope
+- action_publish_document
+- action_register_customer
+- action_send_bulk_message
+- action_settle_commission_infodevelopers
+- action_transaction_from_mobile
+- action_verify_commission_amount

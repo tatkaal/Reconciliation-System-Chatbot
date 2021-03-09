@@ -1,0 +1,135 @@
+version: "2.0"
+
+stories:
+
+- story: Greet Story
+  steps:
+  - intent: greeting
+  - action: action_greeting
+
+- story: Goodbye Story
+  steps:
+  - intent: goodbye
+  - action: action_goodbye
+  
+- story: story2
+  steps:
+  - intent: out_of_scope
+  - action: action_out_of_scope
+
+- story: interactive_story_1
+  steps:
+  - intent: register_customer
+  - action: action_register_customer
+
+- story: interactive_story_2
+  steps:
+  - intent: change_pin_mobile_number
+    entities:
+    - feature: pin
+  - action: action_change_pin_mobile_number
+
+- story: interactive_story_3
+  steps:
+  - intent: change_pin_mobile_number
+    entities:
+    - feature: mobile
+  - action: action_change_pin_mobile_number
+
+- story: interactive_story_4
+  steps:
+  - intent: transaction_from_mobile
+  - action: action_transaction_from_mobile
+
+- story: interactive_story_5
+  steps:
+  - intent: close_mobile_banking_service
+  - action: action_close_mobile_banking_service
+
+- story: interactive_story_6
+  steps:
+  - intent: send_bulk_message
+  - action: action_send_bulk_message
+
+- story: interactive_story_7
+  steps:
+  - intent: compose_features
+    entities:
+    - feature: news
+  - action: action_compose_features
+
+- story: interactive_story_8
+  steps:
+  - intent: compose_features
+    entities:
+    - feature: events
+    - feature: news
+  - action: action_compose_features
+
+- story: interactive_story_9
+  steps:
+  - intent: compose_features
+    entities:
+    - feature: advertisement
+  - action: action_compose_features
+
+- story: interactive_story_10
+  steps:
+  - intent: compose_message
+    entities:
+    - feature: mobile
+  - action: action_compose_message
+
+- story: interactive_story_11
+  steps:
+  - intent: compose_message
+    entities:
+    - feature: login
+  - action: action_compose_message
+
+- story: interactive_story_12
+  steps:
+  - intent: settle_commission_infodevelopers
+  - action: action_settle_commission_infodevelopers
+
+- story: interactive_story_13
+  steps:
+  - intent: approve_pin_request
+    entities:
+    - feature: pin
+  - action: action_approve_pin_request
+
+- story: interactive_story_14
+  steps:
+  - intent: publish_document
+  - action: action_publish_document
+
+- story: interactive_story_15
+  steps:
+  - intent: limit_inter_bank_transfer
+  - action: action_limit_inter_bank_transfer
+
+- story: interactive_story_16
+  steps:
+  - intent: verify_commission_amount
+  - action: action_verify_commission_amount
+
+- story: interactive_story_1
+  steps:
+  - intent: after_greet
+  - action: action_after_greet
+
+- story: interactive_story_2
+  steps:
+  - intent: affirm
+  - action: action_after_affirm
+
+- story: interactive_story_3
+  steps:
+  - intent: deny
+  - action: action_after_deny
+
+- story: interactive_story_4
+  steps:
+  - intent: about_bot
+  - action: action_about
