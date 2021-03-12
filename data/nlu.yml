@@ -1,267 +1,314 @@
 version: "2.0"
 nlu:
-- intent: greeting
-  examples: |
-    - hello
-    - hi
-    - namaste
-    - hey there
-    - hey
-    - hello there
-    - good morning
-    - good evening
-    - good afternoon
-- intent: after_greet
-  examples: |
-    - how are you
-    - hi how are you
-    - hey how you doing
-    - how u doing
-    - are you fine
-    - hey are you fine
-    - good morning are you fine
-    - are you ok
-    - hey buddy how are you
-- intent: affirm
-  examples: |
-    - good
-    - ok
-    - its ok
-    - Good
-    - yes
-    - indeed
-    - of course
-    - superb
-    - correct
-    - that sounds good
-    - yes yes yes
-    - ok bro
-- intent: deny
-  examples: |
-    - no
-    - never
-    - i don't think so
-    - no way
-    - not really
-    - no no no
-    - no maan
-    - not good
-- intent: goodbye
-  examples: |
-    - bye
-    - goodbye
-    - good bye
-    - stop
-    - end
-    - Bye
-    - Bye bye
-    - Okay, thank you
-    - Okay i am done.
-    - Thank you
-    - Thanks for helping me
-    - Stop
-    - exit
-    - Okay ,thank you
-    - okay, thank you
-    - Goodbye
-- intent: out_of_scope
-  examples: |
-    - I can't get enough information.
-    - This bot did not help me
-    - This bot is useless
-    - You are useless
-    - This does not work
-    - Is Rasa bot really smart?
-    - bots are bad
-    - I dont like bots
-    - Is Rasa bot smart?
-    - I can't follow this chatbot
-    - what the fuck is going on?
-    - What is wrong with this universe?
-    - capital city of nepal
-    - What is wrong these days?
-    - I am so tired
-    - I don't want to chat in this bot.
-    - This chatbot is not good.
-    - Why so high interest rate?
-    - This company is fraud.
-    - play game
-    - fuck you
-    - asshole
-    - you bitch
-    - bitch
-    - tell a joke
-    - tell me a joke
-    - what is football
-    - what is the process to flirt with a girl
-    - process to die
-    - steps to be a millionaire
-    - methods to be rich
-    - who is david beckham
-    - who is albert
-    - who are the illuminatis
-- intent: about_bot
-  examples: |
-    - What is this chatbot?
-    - what are you
-    - who are you?
-    - chatbot
-    - about chatbot
-    - Tell me about yourself
-    - I want to know about you
-    - tell about you
-    - What is this?
-    - are you a human or a bot
-    - tell about yourself
-    - about you
-    - i want to know about you
-    - hey tell about you
-- intent: register_customer
-  examples: |
-    - i wanna register in CBS
-    - new registration
-    - how to register as a new customer in CBS
-    - create new account in mDabali
-    - registration process for cbs
-    - new customer register for mdabali
-    - register customer
-- intent: change_pin_mobile_number
-  examples: |
-    - how to change the [Mobile](feature) number if the mobile number of the member is changed
-    - change the [mobile](feature) number from the system
-    - i want to change my number
-    - change my [mobile](feature) number
-    - i want to reset [pin](feature)
-    - how to reset the [Pin](feature)
-    - what is the process of resetting the [pin](feature)
-    - [pin](feature) reset
-    - reboot my current [pin](feature) number
-    - how to restart my [Pin](feature) number
-    - change my [pin](feature)
-    - change the current [pin](feature) number
-    - i want to change [pin](feature) number
-    - change my [pin](feature) number
-    - i want to change the [mobile](feature) number
-- intent: transaction_from_mobile
-  examples: |
-    - how to add the the account number to access the transaction through mobile number
-    - remove the account number so that i can access the transaction through mobile number
-    - access the transaction from my mobile number
-    - i want to see the transaction from the mobile number
-    - access transction
-- intent: close_mobile_banking_service
-  examples: |
-    - how can i close the mobile banking service of a member
-    - remove the mobile banking service
-    - end the mobile banking service for a customer
-    - process of closing a mobile banking service of a cbs member
-    - i have a CSB member whose mobile banking service i want to end
-    - stop the mobile banking
-- intent: send_bulk_message
-  examples: |
-    - how can i send the bulk message from CSB
-    - send a message in bulk
-    - i want send a message in a group
-    - send many messages at a single time
-    - send messages in a mass to every memebers
-    - i want to send a message to every customer
-    - proces to send a message in bulk
-- intent: compose_features
-  examples: |
-    - how can i compose [news](feature) and [events](feature) in mobile banking
-    - i want to create an [Event](feature) from mobile banking
-    - make a [News](feature) from mobile banking
-    - what is the process of composing a [news](feature)
-    - methods to compose an [event](feature) in mobile banking
-    - composing [Events](feature) and [news](feature)
-    - compose [advertisement](feature)
-    - how to create an [Advertisement](feature) in mobile banking
-    - show me the procedure to create an [advertise](feature) in my mdabali
-    - make [Advertise](feature) from the mobile banking
-    - process to compose a [news](feature)
-    - procedure to compose the [events](feature) and [news](feature)
-    - create an [advertisement](feature)
-- intent: compose_message
-  examples: |
-    - how can i compose the [login](feature) message in Mobile banking
-    - compose the [Login](feature) message
-    - create message after [login](feature)
-    - make a [Login](feature) message for the member
-    - what is the process of writting a message for [login](feature)
-    - [mobile](feature) message compose
-    - what is the procedure to compose a message for [mobile](feature) in mobile banking
-    - create a [Mobile](feature) message in Mobile bannking
-    - create a message for [mobile](feature)
-    - create a message after [login](feature)
-- intent: settle_commission_infodevelopers
-  examples: |
-    - how can i settle the comission send from infodevelopers
-    - settling the commission
-    - how is the process of settling the commission from mobile
-    - i want to settle the comission
-    - i want to clear up the commission of info developers
-    - clear up the commission
-    - settle the comission
-    - commission settle
-    - procedure to settle commission
-- intent: approve_pin_request
-  examples: |
-    - how can i approve the pin request sent by mobile banking users via online
-    - approve pin request
-    - approve the pin request of the user
-    - accept the pin request sent by the user
-    - accept the request for pin of the user in online
-    - procedure to accept the [pin](feature) request
-- intent: publish_document
-  examples: |
-    - how can i publish the document in mobile banking
-    - what is the process to publish the document
-    - i want to publish a document in the CBS
-    - publish document
-    - process to publish a mobile document
-    - how to publish document
-- intent: limit_inter_bank_transfer
-  examples: |
-    - how can i set up the limits of inter bank transfer
-    - set the limit for the wallet
-    - i want to set a limit for the QR payment
-    - make a limit for the qr payment
-    - what is the process of settting a limit for the external payment
-    - procedure of setting a limit for payment
-    - process to limi the the amount of transfering money between bank
-- intent: verify_commission_amount
-  examples: |
-    - how do i verify the comission amount sent from info developers
-    - verify the comission amount
-    - from where can i verify the comission amount
-    - process to verify the amount
-    - i need to verify the amount of comission
-    - steps to verify the commission amount
-- synonym: mobile
-  examples: |
-    - mobile
-    - Mobile
-- synonym: pin
-  examples: |
-    - pin
-    - Pin
-- synonym: login
-  examples: |
-    - login
-    - Login
-- synonym: news
-  examples: |
-    - News
-    - news
-- synonym: events
-  examples: |
-    - Events
-    - events
-    - event
-    - Event
-- synonym: advertisement
-  examples: |
-    - Advertisement
-    - advertise
-    - advertisement
-    - Advertise
+  - intent: greeting
+    examples: |
+      - hello
+      - hi
+      - namaste
+      - hey there
+      - hey
+      - hello there
+      - good morning
+      - good evening
+      - good afternoon
+  - intent: after_greet
+    examples: |
+      - how are you
+      - hi how are you
+      - hey how you doing
+      - how u doing
+      - are you fine
+      - hey are you fine
+      - good morning are you fine
+      - are you ok
+      - hey buddy how are you
+  - intent: affirm
+    examples: |
+      - good
+      - ok
+      - its ok
+      - Good
+      - yes
+      - indeed
+      - of course
+      - superb
+      - correct
+      - that sounds good
+      - yes yes yes
+
+  - intent: deny
+    examples: |
+      - no
+      - never
+      - i don't think so
+      - no way
+      - not really
+      - no no no
+      - no maan
+      - not good
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - good bye
+      - stop
+      - end
+      - Bye
+      - Bye bye
+      - Okay, thank you
+      - Okay i am done.
+      - Thank you
+      - Thanks for helping me
+      - Stop
+      - exit
+      - Okay ,thank you
+      - okay, thank you
+      - Goodbye
+  - intent: out_of_scope
+    examples: |
+      - I can't get enough information.
+      - This bot did not help me
+      - This bot is useless
+      - You are useless
+      - This does not work
+      - Is Rasa bot really smart?
+      - bots are bad
+      - I dont like bots
+      - Is Rasa bot smart?
+      - I can't follow this chatbot
+      - what the fuck is going on?
+      - What is wrong with this universe?
+      - capital city of nepal
+      - What is wrong these days?
+      - I am so tired
+      - I don't want to chat in this bot.
+      - This chatbot is not good.
+      - Why so high interest rate?
+      - This company is fraud.
+      - play game
+      - fuck you
+      - asshole
+      - you bitch
+      - bitch
+      - tell a joke
+      - tell me a joke
+      - what is football
+      - what is the process to flirt with a girl
+      - process to die
+      - steps to be a millionaire
+      - methods to be rich
+      - who is david beckham
+      - who is albert
+      - who are the illuminatis
+  - intent: about_bot
+    examples: |
+      - What is this chatbot?
+      - what are you
+      - who are you?
+      - chatbot
+      - about chatbot
+      - Tell me about yourself
+      - I want to know about you
+      - tell about you
+      - What is this?
+      - are you a human or a bot
+      - tell about yourself
+      - about you
+      - i want to know about you
+      - hey tell about you
+
+  - intent: what_is
+    examples: |
+      - what is [Reconciliation system](attr)
+      - tell me about [ATM Transaction Reconciliation](attr)
+      - i want to know [Nostro Account](attr)
+      - Introduce [Nostro Reconciliation](attr)
+      - Hey, tell me about [Nostro Account](attr)
+      - Could you please tell me about [ATM Transaction Reconciliation](attr)
+      - So what is [Nostro Reconciliation](attr)
+      - Say about [reconciliation system](attr)
+
+  - intent: differences_questions
+    examples: |
+      - what is the difference between [Onus transaction and Offus transaction](diff)
+      - Diffences between [onus transaction and offus transaction](diff)
+      - What are the differences in [Onus transaction and Offus transaction](diff)
+      - Tell me the difference between [Onus transaction and Offus transaction](diff)
+
+  - intent: system_features
+    examples: |
+      - what can admin do?
+      - What can admin user do?
+      - what are the roles of admin?
+      - tell me what admin can do?
+      - what access do admin have?
+      - What are admins capable of?
+  - intent: setup_module
+    examples: |
+      - i want to setup [Transaction data source](setup)
+      - what is the process to setup [Reconciliation category](setup)
+      - Tell about [Reconciliation category](setup) setup
+      - what can user setup in [Reconciliation category](setup)
+      - what are the [Transaction data source](setup) user can setup?
+      - what sort of [Transaction data source](setup) can be setup?
+      - what can we setup in [Transaction data source](setup)?
+      - tell me about [Reconciliation category](setup) setup
+      - what are the options available for [Reconciliation category](setup) setup?
+      - available options for [Transaction data source](setup) setup
+      - what can user do with [Transaction data source](setup)
+      - [Transaction data source](setup) setup
+      - [Reconciliation category](setup) setup
+
+  - intent: reconciliation_data_source
+    examples: |
+      - Reconciliation data source setup
+      - what can user setup through reconciliation data source?
+      - what can be setup using reconciliation data source?
+      - what is reconciliation data source screen?
+      - tell me about reconciliation data source?
+      - Transaction data source required for each reconciiliation category can be setup through which screen?
+
+  - intent: reconciliation_field_comparison
+    examples: |
+      - Reconciliation field comparison
+      - What are required during reconciliation process?
+      - what can be configured during reconciliation process?
+      - what are required to be compared during reconciliation process?
+      - When user configures fields or columns of different data sources what are the things required to be compared?
+      - what can user configure when comparing with reconciliation process?
+
+  - intent: Receivable_payable_setup
+    examples: |
+      - Receivable payable setup
+      - Why is Receivable payable setup screen required?
+      - Why do user need Receivable payable setup?
+
+  - intent: bank_setup
+    examples: |
+      - Bank setup
+      - why is bank setup required?
+      - why do user need bank setup?
+      - why do we require bank setup?
+      - why do we need bank setup?
+      - what is the use of bank setup?
+      - bank setup is required for what purpose?
+
+  - intent: RBB_branch_setup
+    examples: |
+      - RBB branch setup
+      - what branches of RBB is setup?
+
+  - intent: Terminal_type_setup
+    examples: |
+      - Terminal Type setup
+      - How is transaction done through terminal setup?
+      - How transaction is performed in terminal setup?
+      - In terminal setup how is transaction done?
+
+  - intent: vendor_setup
+    examples: |
+      - Vendor setup
+      - what type of vendor can be setup?
+      - what options are available to setup vendor?
+      - types of vendor to setup
+
+  - intent: merchant_setup
+    examples: |
+      - Merchant Setup
+      - what is merchant setup required for?
+      - In POS terminal type what is required?
+      - what requires Merchant setup?
+
+  - intent: terminal_setup
+    examples: |
+      - Terminal Setup
+      - what happens in terminal setup?
+      - what terminal setup does?
+      - what is termial setup?
+      - what terminal setup is about?
+      - what is setup for different RBB branch?
+
+  - intent: data_source_location
+    examples: |
+      - Data source file location
+      - Can user configure path location of different data sources files?
+      - what can user do with data sources files and folders?
+
+  - intent: dynamic_file_field_select
+    examples: |
+      - Dynamic file field select
+      - what will be displayed during import?
+      - what will user map the columns of different data sources with?
+
+  - intent: import_module
+    examples: |
+      - where do user extract data files or folders from?
+      - where do user upload data files from different transaction data sources?
+      - where are files from transaction data sources like CBS, EJ, Switch, VISA uploaded?
+      - from where do user extract data files of different transaction data sources?
+      - import module
+
+  - intent: process_import_file
+    examples: |
+      - How do i import file or folder from different transaction data source?
+      - What are the process to import files from transaction data source?
+      - list the methods to import different data sources?
+
+  - intent: reconciliation_module
+    examples: |
+      - Reconciliation module
+      - what user does with reconciliation module?
+      - what can be done with reconciliation module?
+      - what user does with reconciliation category?
+      - what type of reconciliation process does user carry out?
+      - what is reconciliation module?
+      - tell me about reconciliation module
+
+  - intent: report_module
+    examples: |
+      - Report module
+      - what can user do with report module?
+      - what can be done with report module?
+      - what is report module?
+
+  - intent: usermanagement_module
+    examples: |
+      - usermanagement_module
+      - what can admin user create?
+      - what can admin assign?
+      - what can admin user create and assign?
+      - what can admin user do?
+      - what can admin do?
+
+  - synonym: Reconciliation system
+    examples: |
+      - Reconciliation System
+      - Reconciliation system
+      - reconciliation system
+  - synonym: ATM Transaction Reconciliation
+    examples: |
+      - atm transaction reconciliation
+      - ATM Transaction Reconciliation
+      - ATM transaction reconciliation
+      - atm Transaction Reconciliation
+  - synonym: Nostro Account
+    examples: |
+      - nostro account
+      - Nostro account
+  - synonym: Nostro Reconciliation
+    examples: |
+      - nostro reconciliation
+      - Nostro reconciliation
+  - synonym: Onus transaction and Offus transactionnts
+    examples: |
+      - Onus Transaction and Offus Transaction
+      - onus transaction and offus transaction
+  - synonym: Transaction data source
+    examples: |
+      - transaction data source
+      - Transaction source
+      - transaction source
+  - synonym: Reconciliation category
+    examples: |
+      - reconciliation category
+      - Reconciliation type

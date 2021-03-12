@@ -1,48 +1,65 @@
-version: '2.0'
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- deny
-- affirm
-- after_greet
-- about_bot
-- settle_commission_infodevelopers
-- compose_message
-- approve_pin_request
-- limit_inter_bank_transfer
-- publish_document
-- transaction_from_mobile
-- change_pin_mobile_number
-- compose_features
-- verify_commission_amount
-- register_customer
-- close_mobile_banking_service
-- send_bulk_message
-- greeting:
-    use_entities: []
-- goodbye
-- out_of_scope
+  - deny
+  - affirm
+  - after_greet
+  - about_bot
+  - greeting
+  - goodbye
+  - out_of_scope
+  - what_is
+  - differences_questions
+  - system_features
+  - setup_module
+  - reconciliation_data_source
+  - reconciliation_field_comparison
+  - Receivable_payable_setup
+  - bank_setup
+  - RBB_branch_setup
+  - Terminal_type_setup
+  - vendor_setup
+  - merchant_setup
+  - terminal_setup
+  - data_source_location
+  - dynamic_file_field_select
+  - import_module
+  - process_import_file
+  - reconciliation_module
+  - report_module
+  - usermanagement_module
 entities:
-- feature
+  - attr
+  - diff
+  - setup
 actions:
-- action_about
-- action_after_affirm
-- action_after_deny
-- action_after_greet
-- action_approve_pin_request
-- action_change_pin_mobile_number
-- action_close_mobile_banking_service
-- action_compose_features
-- action_compose_message
-- action_goodbye
-- action_greeting
-- action_handle_fallback
-- action_limit_inter_bank_transfer
-- action_out_of_scope
-- action_publish_document
-- action_register_customer
-- action_send_bulk_message
-- action_settle_commission_infodevelopers
-- action_transaction_from_mobile
-- action_verify_commission_amount
+  - action_about
+  - action_after_affirm
+  - action_after_deny
+  - action_after_greet
+  - action_goodbye
+  - action_greeting
+  - action_handle_fallback
+  - action_out_of_scope
+  - action_what_is
+  - action_differences_questions
+  - action_system_features
+  - action_setup_module
+  - action_reconciliation_data_source
+  - action_reconciliation_field_comparision
+  - action_reconciliation_payable_setup
+  - action_bank_setup
+  - action_RBB_branch_setup
+  - action_Terminal_type_setup
+  - action_vendor_setup
+  - action_merchant_setup
+  - action_terminal_setup
+  - action_data_source_location
+  - action_dynamic_file_field_select
+  - action_import_module
+  - action_process_import_file
+  - action_reconciliation_module
+  - action_report_module
+  - action_usermanagement_module

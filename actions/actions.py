@@ -27,8 +27,8 @@ class About(Action):
 		return []
 
 class OutOfScope(Action):
-	def name(self):
-		return "action_out_of_scope"
+    def name(self):
+    return "action_out_of_scope"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 		messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
@@ -38,7 +38,7 @@ class OutOfScope(Action):
 		return [UserUtteranceReverted()]
 
 class ActionDefaultFallback(Action):
-	def name(self) -> Text:
+	def name(self):
 		return "action_handle_fallback"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -82,8 +82,7 @@ class Goodbye(Action):
 		return []
 
 class ActionAfterAffirm(Action):
-
-    def name(self) -> Text:
+    def name(self):
         return "action_after_affirm"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -103,222 +102,34 @@ class AfterNo(Action):
 		dispatcher.utter_message(text=reply)
 		return []
 
-class RegisterCustomer(Action):
+class IntroductionQA(Action):
     def name(self):
-        return "action_register_customer"
+        return "action_what_is"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "Follow the steps to register a customer: -",
-            "Go to the Screen 'mDabali Customer Registration - 12114'",
-            "Click on New",
-            "Enter the customer code/ customer name, mobile number and tag the concerned account to access the transaction. If you want to allow fund transfer to the respective account, then choose Yes. Then click on plus icon.",
-            "After adding the details click on save and approve the customer registration.",
-            "After approving the customer registration, go to the screen 'mDabali PIN Verification – 12435'",
-            "Click on New",
-            "Enter the customer code/ customer name and send the PIN",
-            "After sending the PIN, enter the PIN no. sent to the concerned member and click on verify PIN",
-            "After PIN verification, the customer is successfully registered in CBS"
-        ]
-        with open("images/register_customer.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-
-        with open("images/register_customer_2.png","rb") as image_file:
-            image_base64_2 = base64.b64encode(image_file.read())
-        images = [str(image_base64),str(image_base64_2)]
-
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
-        return []
-
-class ChangeNumber(Action):
-    def name(self):
-        return "action_change_pin_mobile_number"
-
-    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        entity_type = tracker.get_latest_entity_values('feature')
+        entity_type = tracker.get_latest_entity_values('attr')
         entity_list=[]
         for item in entity_type:
             entity_list.append(item)
         print (f"The entities are: {entity_list}")
         try:
-            if 'pin' in entity_list:
-                steps = [
-                    "Please follow the steps: -",
-                    "Go to the Screen 'mDabali Reset PIN - 12436'",
-                    "Click on New",
-                    "Enter the customer code/ customer name and click on reset and send new PIN."
-                ]
-                with open("images/reset_pin.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())
-                print("running the steps to change pin number")
+            if 'Reconciliation system' in entity_list:
+                message = "Reconciliation is an accounting process that compares two or more sets of records to identify whether those figures are correct and in agreement or not. It is particularly useful for explaining the difference between two or more sets of financial records or account balances. To facilitate the comparison of such transactions basically done daily and suggest the matched and unmatched transactions, the Comprehensive Reconciliation System (CRS) has been introduced."
 
-            elif 'mobile' in entity_list:
-                steps = [
-                    "Please follow the steps: -",
-                    "Go to the Screen 'mDabali Mobile Number Change – 11614'",
-                    "Click on New",
-                    "Enter the customer code/ customer name and enter the new mobile number",
-                    "After changing the mobile number click on save and approve."
-                ]
-                with open("images/reset_mobile.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())
-                print("running the steps to change mobile number")
-
-            images = [str(image_base64)]        
-            attachment = {
-                "query_response": steps,
-                "data":[{"image": images}],
-                "type":"message_with_image",
-                "data_fetch_status": "success"
-            }
-        except:
-            messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
-				"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
-            reply = random.choice(messages)
-            dispatcher.utter_message(text=reply)
-            return [UserUtteranceReverted()]
-        dispatcher.utter_message(attachment=attachment)
-        return []
-
-class TransactionMobile(Action):
-    def name(self):
-        return "action_transaction_from_mobile"
-
-    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "Follow these steps: -",
-            "Go to the Screen 'mDabali Mobile Facility Update - 11616'",
-            "Click on New",
-            "Enter the customer code / customer name",
-            "After viewing the details, you can find out edit, delete and plus icons.",
-            "To add the accounts, you need to add the account number and click the plus icon.",
-            "If you want to remove the account number tagged, click on the delete icon.",
-            "If you want to edit the details, then click on edit icon."
-        ]
-        
-        with open("images/add_remove_account.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
-        return []
-
-class CloseMobileBanking(Action):
-    def name(self):
-        return "action_close_mobile_banking_service"
-
-    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "Follow the steps to close mobile banking: -",
-            "Go to the Screen 'Mobile Banking Service Closure - 12282'",
-            "Click on New",
-            "Enter the customer code/ customer name and click on save & approve."
-        ]
-        
-        with open("images/close_mobile_banking.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
-        return []
-
-class SendBulkMessage(Action):
-    def name(self):
-        return "action_send_bulk_message"
-
-    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "To send messages in bluk, follow the steps: -",
-            "Go to the Screen 'SMS Send Maintenance - 12118'",
-            "Choose the destination or if you have the number in excel sheet then import excel sheet",
-            "Enter the text message and click on send.",
-            "Please be noted that the number in destination is seen if the number has been saved in mobile number for alert in 'Customer Information Maintenance-01024'"
-        ]
-
-        with open("images/send_bulk_message.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-        
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
-        return []
-
-
-class ComposeFeature(Action):
-    def name(self):
-        return "action_compose_features"
-
-    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        entity_type = tracker.get_latest_entity_values('feature')
-        entity_list=[]
-        for item in entity_type:
-            entity_list.append(item)
-        print (f"The entites are: {entity_list}")
-        try:
-            if 'news' in entity_list or 'events' in entity_list:
-                steps = [
-                    "Follow the given steps: -",
-                    "Go to the Screen 'News And Event Category Setup - 12462'",
-                    "Click on New",
-                    "Fill up Category Name, Category Name (Local) and Display Order",
-                    "Click save and approve the setup",
-                    "After that go to the screen 'News And Events Compose – 12256'",
-                    "Click on New, then choose Category Type, Language and fill up publish days, News Title and Body. If you have any image related to news then browse the image.",
-                    "Click on save & approve."
-                ]
-                with open("images/compose_news_events.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())
-                with open("images/compose_news_events_2.png","rb") as image_file:
-                    image_base64_2 = base64.b64encode(image_file.read())
-                images = [str(image_base64),str(image_base64_2)]
-                print ("running the steps to compose news or events")
+            elif 'ATM Transaction Reconciliation' in entity_list:
+                message = "ATM reconciliation is required to know the difference between ATM balance as per book and as per actual. Moreover to find the reasons of this difference and supply new cash in ATM for smooth customers' transactions.It also enables real-time representation of transactions in a bank’s balance sheets for audits and faster fraud detection and refund in case of technical machine problems."
             
-            elif 'advertisement' in entity_list:
-                steps = [
-                    "Follow the steps: -",
-                    "Go to the Screen 'Advertisement Category Setup - 12461'",
-                    "Click on New",
-                    "Fill up Category Name, Category Name (Local) and Display Order",
-                    "Click save and approve the setup",
-                    "After that go to the screen 'Advertisement Compose - 12463'",
-                    "Click on New, then choose Category Type and fill up publish days. If you have any image related to advertisement, then browse the image or you can add the web address too.",
-                    "Finally Click on save & approve."
-                ]
-                with open("images/compose_advertisement.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())            
-                with open("images/compose_advertisement_2.png","rb") as image_file:
-                    image_base64_2 = base64.b64encode(image_file.read())
-                images = [str(image_base64), str(image_base64_2)]
-                print ("running the steps to compose advertisement")
-        
+            elif 'Nostro Account' in entity_list:
+                message = "A nostro account refers to an account that a bank holds in another bank (can be either local or foreign bank)"
+                
+            elif 'Nostro Reconciliation' in entity_list:
+                message = "Nostro Reconciliation deals with the reconciliation of the entries of an external statement with that of the corresponding entries in the Nostro account. "
+            
 
             attachment = {
-                "query_response": steps,
-                "data":[{"image": images}],
-                "type":"message_with_image",
+                "query_response": message,
+                "data":[],
+                "type":"message_with_text",
                 "data_fetch_status": "success"
             }
         except:
@@ -327,51 +138,27 @@ class ComposeFeature(Action):
             reply = random.choice(messages)
             dispatcher.utter_message(text=reply)
             return [UserUtteranceReverted()]
-        dispatcher.utter_message(attachment=attachment)
+        dispatcher.utter_message(text=message)
         return []
 
-
-class ComposeMessage(Action):
+class DiffQA(Action):
     def name(self):
-        return "action_compose_message"
+        return "action_differences_questions"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        entity_type = tracker.get_latest_entity_values('feature')
-        entity_list = []
+        entity_type = tracker.get_latest_entity_values('diff')
+        entity_list=[]
         for item in entity_type:
             entity_list.append(item)
         print (f"The entities are: {entity_list}")
         try:
-            if 'login' in entity_list:
-                steps = [
-                    "Follow the given steps: -",
-                    "Go to the Screen 'mDabali Login Message Compose - 12460'",
-                    "Click on New",
-                    "Write the message in both Nepali and English",
-                    "If you have any image, then you can browse the image",
-                    "After that click on save, then the message will be appearing while logging the application."
-                ]
-                with open("images/compose_login_message.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())
-                images = [str(image_base64)]
-                print ("running the steps to compose login message")
+            if 'Onus transaction and Offus transaction' in entity_list:
+                message = "A transaction carried out at ATM of card issuing bank is called Onus transaction whereas a transaction carried out at ATM of bank which is different from card issuing bank is called Offus transaction."
 
-            elif 'mobile' in entity_list:
-                steps = [
-                    "Follow the  given procedures: -",
-                    "Go to the Screen 'Mobile Message Compose - 12471'",
-                    "Click on New, then fill up display till days, display order and message in both English and Nepali.",
-                    "Then Click on Save and Approve."
-                ]
-                with open("images/compose_mobile_message.png","rb") as image_file:
-                    image_base64 = base64.b64encode(image_file.read())
-                images = [str(image_base64)]
-                print ("running the steps to compose mobile message")
-            
             attachment = {
-                "query_response": steps,
-                "data":[{"image": images}],
-                "type":"message_with_image",
+                "query_response": message,
+                "data":[],
+                "type":"message_with_text",
                 "data_fetch_status": "success"
             }
         except:
@@ -380,131 +167,198 @@ class ComposeMessage(Action):
             reply = random.choice(messages)
             dispatcher.utter_message(text=reply)
             return [UserUtteranceReverted()]
-        dispatcher.utter_message(attachment=attachment)
+        dispatcher.utter_message(text=message)
+        return []
+
+class SystemFeatures(Action):
+    def name(self):
+        return "action_system_features"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "Admin have access to the whole system"
+        dispatcher.utter_message(text=message)
+        return []
+
+class SetupModule(Action):
+    def name(self):
+        return "action_setup_module"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        entity_type = tracker.get_latest_entity_values('setup')
+        entity_list=[]
+        for item in entity_type:
+            entity_list.append(item)
+        print (f"The entities are: {entity_list}")
+        try:
+            if 'Transaction data source' in entity_list:
+                message = "User can setup transaction data sources like CBS, EJ, Visa,etc. "
+            elif 'Reconciliation category' in entity_list:
+                message = "User can setup Reconciliation category such as ATM acquiring Onus, ATM acquiring Offus Visa, etc"
+            attachment = {
+                "query_response": message,
+                "data":[],
+                "type":"message_with_text",
+                "data_fetch_status": "success"
+            }
+        except:
+            messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
+				"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
+            reply = random.choice(messages)
+            dispatcher.utter_message(text=reply)
+            return [UserUtteranceReverted()]
+        dispatcher.utter_message(text=message)
+        return []
+
+class ReconciliationDataSource(Action):
+    def name(self):
+        return "action_reconciliation_data_source"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "User can setup transaction data source required for each reconciiliation category through this setup screen"
+        dispatcher.utter_message(text=message)
+        return []
+
+class ReconciliationFieldComparision(Action):
+    def name(self):
+        return "action_reconciliation_field_comparision"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "User can configure fields/column of  different data sources that are required to be compared during reconciliation process such as reference number, transaction amount, etc. "
+        dispatcher.utter_message(text=message)
+        return []
+
+class ReconciliationPayableSetup(Action):
+    def name(self):
+        return "action_reconciliation_payable_setup"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "This setup screen is required for Visa receivable/payable reconciliation. User need to setup this screen to import Visa issuing and Visa acquiring files. "
+        dispatcher.utter_message(text=message)
+        return []
+
+class BankSetup(Action):
+    def name(self):
+        return "action_bank_setup"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "Bank setup is required for Nostro Reconciliation."
+        dispatcher.utter_message(text=message)
+        return []
+
+class RBBBranchSetup(Action):
+    def name(self):
+        return "action_RBB_branch_setup"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "Different branch of RBB is setup."
+        dispatcher.utter_message(text=message)
+        return []
+
+class Terminal_type_setup(Action):
+    def name(self):
+        return "action_Terminal_type_setup"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "Transaction is done either thourgh POS or ATM  is setup in this screen"
+        dispatcher.utter_message(text=message)
         return []
 
 
-class SettleCommission(Action):
+class vendor_setup(Action):
     def name(self):
-        return "action_settle_commission_infodevelopers"
+        return "action_vendor_setup"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "Follow the given procedure to settle the comission: -",
-            "Go to the Screen 'Mobile Service Commission Settlement - 1225'",
-            "Click on New",
-            "Enter the amount send from the InfoDevelopers",
-            "Choose Advance in Tax treatment Method and adjustment in Payment",
-            "Write the description and verify the voucher i.e. \nCommission Receivable \t Cr. \nRecharge and Advance \t Dr. \nAdvance Tax \t Dr.",
-            "After verification, click on save."
-        ]
-        with open("images/settle_commission.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-        images = [str(image_base64)]
-
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
+        message = "Vendor like Diebold or NCR can be setup"
+        dispatcher.utter_message(text=message)
         return []
 
 
-class ApprovePinRequest(Action):
+class merchant_setup(Action):
     def name(self):
-        return "action_approve_pin_request"
+        return "action_merchant_setup"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "Follow the steps to approve the pin request: -",
-            "Go to the Screen 'Mobile PIN Reset Request Approval - 12474'",
-            "If there is any request sent, then the request will be displayed the screen. You can view the customer details and approve the request if the details are correct.",
-            "Please noted that the Approval of this PIN Reset request falls completely on your responsibility."
-        ]
-        with open("images/approve_pin_request.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
+        message = "Merchant setup is required for POS terminal type transaction"
+        dispatcher.utter_message(text=message)
         return []
 
 
-class PublishDocument(Action):
+class terminal_setup(Action):
     def name(self):
-        return "action_publish_document"
+        return "action_terminal_setup"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "To publish document, follow the procedures: -",
-            "Go to the Screen 'Mobile Document Publish - 12485'",
-            "Click on New and fill up the Document Title, Document Title (Local) and Publish till days. If you want to allow download then tick on the box and choose the pdf document or web URL to publish the document.",
-            "Then Click on Save and Approve. The document can be viewed by the mobile banking users in view document of mobile banking."
-        ]
-        with open("images/publish_document.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
+        message = "Terminal information for different RBB branch is setup"
+        dispatcher.utter_message(text=message)
         return []
 
 
-class LimitBankTransfer(Action):
+class data_source_location(Action):
     def name(self):
-        return "action_limit_inter_bank_transfer"
+        return "action_data_source_location"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "The process of limit the inter bank transfer are: -",
-            "Go to the Screen 'DFS Service Scope Based Transaction Limit Setup - 12479'",
-            "Click on New, Select the service scope, and fill up per transaction minimum amount, maximum amount, daily, weekly and monthly transaction amount & count.",
-            "Then Click on Save and Approve."
-        ]
-        with open("images/limit_bank_transfer.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
+        message = "User can configure path location of different data sources files/folder"
+        dispatcher.utter_message(text=message)
         return []
 
 
-class VerifyComissionAmount(Action):
+class dynamic_file_field_select(Action):
     def name(self):
-        return "action_verify_commission_amount"
+        return "action_dynamic_file_field_select"
 
     def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-        steps = [
-            "The process to verify the commission amount are: -",
-            "Go to the Screen 'Commission Balance Report-12272'",
-            "Filter the date",
-            "Choose the actual date from report option and print the data",
-            "Then you can verify by deducting the opening balance from closing balance."
-        ]
-        with open("images/verify_commission.png","rb") as image_file:
-            image_base64 = base64.b64encode(image_file.read())
-        images = [str(image_base64)]
-        attachment = {
-            "query_response": steps,
-            "data":[{"image": images}],
-            "type":"message_with_image",
-            "data_fetch_status": "success"
-        }
-        dispatcher.utter_message(attachment=attachment)
+        message = "User will map the fields/column name of different data sources files with data base table that shall be displayed during import."
+        dispatcher.utter_message(text=message)
+        return []
+
+
+class import_module(Action):
+    def name(self):
+        return "action_import_module"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "User extract data files or folder from different transaction data sources such as CBS, EJ, Switch,VISA,etc from the designated ftp path and upload in the reconciliation system server"
+        dispatcher.utter_message(text=message)
+        return []
+
+
+class process_import_file(Action):
+    def name(self):
+        return "action_process_import_file"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "1. At first go to the transaction data source file location screen and configure path for various data sources \n\n2.Now go to import screen of each data source and click import button"
+        dispatcher.utter_message(text=message)
+        return []
+
+
+
+class reconciliation_module(Action):
+    def name(self):
+        return "action_reconciliation_module"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "User carries out reconciliation process  of various reconciliation category such as ATM reconciliation, Nostro reconciliation, etc"
+        dispatcher.utter_message(text=message)
+        return []
+
+
+class report_module(Action):
+    def name(self):
+        return "action_report_module"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "User can view and download different types of report in excel,csv format generated after reconciliation."
+        dispatcher.utter_message(text=message)
+        return []
+
+class usermanagement_module(Action):
+    def name(self):
+        return "action_usermanagement_module"
+
+    def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
+        message = "Admin user can create and assign new user with role, module setup and privilege setup"
+        dispatcher.utter_message(text=message)
         return []
