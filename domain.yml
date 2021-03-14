@@ -1,65 +1,65 @@
-version: "2.0"
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-  - deny
-  - affirm
-  - after_greet
-  - about_bot
-  - greeting
-  - goodbye
-  - out_of_scope
-  - what_is
-  - differences_questions
-  - system_features
-  - setup_module
-  - reconciliation_data_source
-  - reconciliation_field_comparison
-  - Receivable_payable_setup
-  - bank_setup
-  - RBB_branch_setup
-  - Terminal_type_setup
-  - vendor_setup
-  - merchant_setup
-  - terminal_setup
-  - data_source_location
-  - dynamic_file_field_select
-  - import_module
-  - process_import_file
-  - reconciliation_module
-  - report_module
-  - usermanagement_module
+- dynamic_file_field_select
+- data_source_location
+- terminal_setup
+- reconciliation_module
+- report_module
+- import_module
+- process_import_file
+- usermanagement_module
+- Terminal_type_setup
+- bank_setup
+- RBB_branch_setup
+- Receivable_payable_setup
+- vendor_setup
+- merchant_setup
+- setup_module
+- reconciliation_data_source
+- reconciliation_field_comparison
+- differences_questions
+- system_features
+- out_of_scope
+- what_is
+- about_bot
+- affirm
+- after_greet
+- greeting
+- deny
+- goodbye
 entities:
-  - attr
-  - diff
-  - setup
+- attr
+- diff
+- setup
 actions:
-  - action_about
-  - action_after_affirm
-  - action_after_deny
-  - action_after_greet
-  - action_goodbye
-  - action_greeting
-  - action_handle_fallback
-  - action_out_of_scope
-  - action_what_is
-  - action_differences_questions
-  - action_system_features
-  - action_setup_module
-  - action_reconciliation_data_source
-  - action_reconciliation_field_comparision
-  - action_reconciliation_payable_setup
-  - action_bank_setup
-  - action_RBB_branch_setup
-  - action_Terminal_type_setup
-  - action_vendor_setup
-  - action_merchant_setup
-  - action_terminal_setup
-  - action_data_source_location
-  - action_dynamic_file_field_select
-  - action_import_module
-  - action_process_import_file
-  - action_reconciliation_module
-  - action_report_module
-  - action_usermanagement_module
+- action_RBB_branch_setup
+- action_Terminal_type_setup
+- action_about
+- action_after_affirm
+- action_after_deny
+- action_after_greet
+- action_bank_setup
+- action_data_source_location
+- action_differences_questions
+- action_dynamic_file_field_select
+- action_goodbye
+- action_greeting
+- action_handle_fallback
+- action_import_module
+- action_merchant_setup
+- action_out_of_scope
+- action_process_import_file
+- action_reconciliation_data_source
+- action_reconciliation_field_comparision
+- action_reconciliation_module
+- action_reconciliation_payable_setup
+- action_report_module
+- action_setup_module
+- action_system_features
+- action_terminal_setup
+- action_usermanagement_module
+- action_vendor_setup
+- action_what_is

@@ -1,314 +1,346 @@
 version: "2.0"
 nlu:
-  - intent: greeting
-    examples: |
-      - hello
-      - hi
-      - namaste
-      - hey there
-      - hey
-      - hello there
-      - good morning
-      - good evening
-      - good afternoon
-  - intent: after_greet
-    examples: |
-      - how are you
-      - hi how are you
-      - hey how you doing
-      - how u doing
-      - are you fine
-      - hey are you fine
-      - good morning are you fine
-      - are you ok
-      - hey buddy how are you
-  - intent: affirm
-    examples: |
-      - good
-      - ok
-      - its ok
-      - Good
-      - yes
-      - indeed
-      - of course
-      - superb
-      - correct
-      - that sounds good
-      - yes yes yes
-
-  - intent: deny
-    examples: |
-      - no
-      - never
-      - i don't think so
-      - no way
-      - not really
-      - no no no
-      - no maan
-      - not good
-  - intent: goodbye
-    examples: |
-      - bye
-      - goodbye
-      - good bye
-      - stop
-      - end
-      - Bye
-      - Bye bye
-      - Okay, thank you
-      - Okay i am done.
-      - Thank you
-      - Thanks for helping me
-      - Stop
-      - exit
-      - Okay ,thank you
-      - okay, thank you
-      - Goodbye
-  - intent: out_of_scope
-    examples: |
-      - I can't get enough information.
-      - This bot did not help me
-      - This bot is useless
-      - You are useless
-      - This does not work
-      - Is Rasa bot really smart?
-      - bots are bad
-      - I dont like bots
-      - Is Rasa bot smart?
-      - I can't follow this chatbot
-      - what the fuck is going on?
-      - What is wrong with this universe?
-      - capital city of nepal
-      - What is wrong these days?
-      - I am so tired
-      - I don't want to chat in this bot.
-      - This chatbot is not good.
-      - Why so high interest rate?
-      - This company is fraud.
-      - play game
-      - fuck you
-      - asshole
-      - you bitch
-      - bitch
-      - tell a joke
-      - tell me a joke
-      - what is football
-      - what is the process to flirt with a girl
-      - process to die
-      - steps to be a millionaire
-      - methods to be rich
-      - who is david beckham
-      - who is albert
-      - who are the illuminatis
-  - intent: about_bot
-    examples: |
-      - What is this chatbot?
-      - what are you
-      - who are you?
-      - chatbot
-      - about chatbot
-      - Tell me about yourself
-      - I want to know about you
-      - tell about you
-      - What is this?
-      - are you a human or a bot
-      - tell about yourself
-      - about you
-      - i want to know about you
-      - hey tell about you
-
-  - intent: what_is
-    examples: |
-      - what is [Reconciliation system](attr)
-      - tell me about [ATM Transaction Reconciliation](attr)
-      - i want to know [Nostro Account](attr)
-      - Introduce [Nostro Reconciliation](attr)
-      - Hey, tell me about [Nostro Account](attr)
-      - Could you please tell me about [ATM Transaction Reconciliation](attr)
-      - So what is [Nostro Reconciliation](attr)
-      - Say about [reconciliation system](attr)
-
-  - intent: differences_questions
-    examples: |
-      - what is the difference between [Onus transaction and Offus transaction](diff)
-      - Diffences between [onus transaction and offus transaction](diff)
-      - What are the differences in [Onus transaction and Offus transaction](diff)
-      - Tell me the difference between [Onus transaction and Offus transaction](diff)
-
-  - intent: system_features
-    examples: |
-      - what can admin do?
-      - What can admin user do?
-      - what are the roles of admin?
-      - tell me what admin can do?
-      - what access do admin have?
-      - What are admins capable of?
-  - intent: setup_module
-    examples: |
-      - i want to setup [Transaction data source](setup)
-      - what is the process to setup [Reconciliation category](setup)
-      - Tell about [Reconciliation category](setup) setup
-      - what can user setup in [Reconciliation category](setup)
-      - what are the [Transaction data source](setup) user can setup?
-      - what sort of [Transaction data source](setup) can be setup?
-      - what can we setup in [Transaction data source](setup)?
-      - tell me about [Reconciliation category](setup) setup
-      - what are the options available for [Reconciliation category](setup) setup?
-      - available options for [Transaction data source](setup) setup
-      - what can user do with [Transaction data source](setup)
-      - [Transaction data source](setup) setup
-      - [Reconciliation category](setup) setup
-
-  - intent: reconciliation_data_source
-    examples: |
-      - Reconciliation data source setup
-      - what can user setup through reconciliation data source?
-      - what can be setup using reconciliation data source?
-      - what is reconciliation data source screen?
-      - tell me about reconciliation data source?
-      - Transaction data source required for each reconciiliation category can be setup through which screen?
-
-  - intent: reconciliation_field_comparison
-    examples: |
-      - Reconciliation field comparison
-      - What are required during reconciliation process?
-      - what can be configured during reconciliation process?
-      - what are required to be compared during reconciliation process?
-      - When user configures fields or columns of different data sources what are the things required to be compared?
-      - what can user configure when comparing with reconciliation process?
-
-  - intent: Receivable_payable_setup
-    examples: |
-      - Receivable payable setup
-      - Why is Receivable payable setup screen required?
-      - Why do user need Receivable payable setup?
-
-  - intent: bank_setup
-    examples: |
-      - Bank setup
-      - why is bank setup required?
-      - why do user need bank setup?
-      - why do we require bank setup?
-      - why do we need bank setup?
-      - what is the use of bank setup?
-      - bank setup is required for what purpose?
-
-  - intent: RBB_branch_setup
-    examples: |
-      - RBB branch setup
-      - what branches of RBB is setup?
-
-  - intent: Terminal_type_setup
-    examples: |
-      - Terminal Type setup
-      - How is transaction done through terminal setup?
-      - How transaction is performed in terminal setup?
-      - In terminal setup how is transaction done?
-
-  - intent: vendor_setup
-    examples: |
-      - Vendor setup
-      - what type of vendor can be setup?
-      - what options are available to setup vendor?
-      - types of vendor to setup
-
-  - intent: merchant_setup
-    examples: |
-      - Merchant Setup
-      - what is merchant setup required for?
-      - In POS terminal type what is required?
-      - what requires Merchant setup?
-
-  - intent: terminal_setup
-    examples: |
-      - Terminal Setup
-      - what happens in terminal setup?
-      - what terminal setup does?
-      - what is termial setup?
-      - what terminal setup is about?
-      - what is setup for different RBB branch?
-
-  - intent: data_source_location
-    examples: |
-      - Data source file location
-      - Can user configure path location of different data sources files?
-      - what can user do with data sources files and folders?
-
-  - intent: dynamic_file_field_select
-    examples: |
-      - Dynamic file field select
-      - what will be displayed during import?
-      - what will user map the columns of different data sources with?
-
-  - intent: import_module
-    examples: |
-      - where do user extract data files or folders from?
-      - where do user upload data files from different transaction data sources?
-      - where are files from transaction data sources like CBS, EJ, Switch, VISA uploaded?
-      - from where do user extract data files of different transaction data sources?
-      - import module
-
-  - intent: process_import_file
-    examples: |
-      - How do i import file or folder from different transaction data source?
-      - What are the process to import files from transaction data source?
-      - list the methods to import different data sources?
-
-  - intent: reconciliation_module
-    examples: |
-      - Reconciliation module
-      - what user does with reconciliation module?
-      - what can be done with reconciliation module?
-      - what user does with reconciliation category?
-      - what type of reconciliation process does user carry out?
-      - what is reconciliation module?
-      - tell me about reconciliation module
-
-  - intent: report_module
-    examples: |
-      - Report module
-      - what can user do with report module?
-      - what can be done with report module?
-      - what is report module?
-
-  - intent: usermanagement_module
-    examples: |
-      - usermanagement_module
-      - what can admin user create?
-      - what can admin assign?
-      - what can admin user create and assign?
-      - what can admin user do?
-      - what can admin do?
-
-  - synonym: Reconciliation system
-    examples: |
-      - Reconciliation System
-      - Reconciliation system
-      - reconciliation system
-  - synonym: ATM Transaction Reconciliation
-    examples: |
-      - atm transaction reconciliation
-      - ATM Transaction Reconciliation
-      - ATM transaction reconciliation
-      - atm Transaction Reconciliation
-  - synonym: Nostro Account
-    examples: |
-      - nostro account
-      - Nostro account
-  - synonym: Nostro Reconciliation
-    examples: |
-      - nostro reconciliation
-      - Nostro reconciliation
-  - synonym: Onus transaction and Offus transactionnts
-    examples: |
-      - Onus Transaction and Offus Transaction
-      - onus transaction and offus transaction
-  - synonym: Transaction data source
-    examples: |
-      - transaction data source
-      - Transaction source
-      - transaction source
-  - synonym: Reconciliation category
-    examples: |
-      - reconciliation category
-      - Reconciliation type
+- intent: greeting
+  examples: |
+    - hello
+    - hi
+    - namaste
+    - hey there
+    - hey
+    - hello there
+    - good morning
+    - good evening
+    - good afternoon
+    - hi man
+- intent: after_greet
+  examples: |
+    - how are you
+    - hi how are you
+    - hey how you doing
+    - how u doing
+    - are you fine
+    - hey are you fine
+    - good morning are you fine
+    - are you ok
+    - hey buddy how are you
+    - hi how u doing
+- intent: affirm
+  examples: |
+    - good
+    - ok
+    - its ok
+    - Good
+    - yes
+    - indeed
+    - of course
+    - superb
+    - correct
+    - that sounds good
+    - yes yes yes
+    - ok good
+- intent: deny
+  examples: |
+    - no
+    - never
+    - i don't think so
+    - no way
+    - not really
+    - no no no
+    - no maan
+    - not good
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - good bye
+    - stop
+    - end
+    - Bye
+    - Bye bye
+    - Okay, thank you
+    - Okay i am done.
+    - Thank you
+    - Thanks for helping me
+    - Stop
+    - exit
+    - Okay ,thank you
+    - okay, thank you
+    - Goodbye
+- intent: out_of_scope
+  examples: |
+    - I can't get enough information.
+    - This bot did not help me
+    - This bot is useless
+    - You are useless
+    - This does not work
+    - Is Rasa bot really smart?
+    - bots are bad
+    - I dont like bots
+    - Is Rasa bot smart?
+    - I can't follow this chatbot
+    - what the fuck is going on?
+    - What is wrong with this universe?
+    - capital city of nepal
+    - What is wrong these days?
+    - I am so tired
+    - I don't want to chat in this bot.
+    - This chatbot is not good.
+    - Why so high interest rate?
+    - This company is fraud.
+    - play game
+    - fuck you
+    - asshole
+    - you bitch
+    - bitch
+    - tell a joke
+    - tell me a joke
+    - what is football
+    - what is the process to flirt with a girl
+    - process to die
+    - steps to be a millionaire
+    - methods to be rich
+    - who is david beckham
+    - who is albert
+    - who are the illuminatis
+    - yo bitch
+- intent: about_bot
+  examples: |
+    - What is this chatbot?
+    - what are you
+    - who are you?
+    - chatbot
+    - about chatbot
+    - Tell me about yourself
+    - I want to know about you
+    - tell about you
+    - What is this?
+    - are you a human or a bot
+    - tell about yourself
+    - about you
+    - i want to know about you
+    - hey tell about you
+    - tell me about this chatbot
+- intent: what_is
+  examples: |
+    - what is [Reconciliation system](attr)
+    - [Reconciliation System](attr)
+    - [Reconciliation system](attr)
+    - Say about [reconciliation system](attr)
+    - tell me about [ATM Transaction Reconciliation](attr)
+    - Could you please tell me about [atm Transaction Reconciliation](attr)
+    - define [atm transaction reconciliation](attr)
+    - say something about [ATM transaction reconciliation](attr)
+    - i want to know [Nostro Account](attr)
+    - [Nostro account](attr)
+    - define [nostro account](attr)
+    - Hey, tell me about [Nostro Account](attr)
+    - So what is [Nostro Reconciliation](attr)
+    - Introduce [Nostro reconciliation](attr)
+    - [nostro reconciliation](attr)
+    - define [reconciliation system]{"entity": "attr", "value": "Reconciliation system"} to me
+    - what is [atm transaction reconciliation]{"entity": "attr", "value": "ATM Transaction Reconciliation"}?
+    - say about [nostro account]{"entity": "attr", "value": "Nostro Account"}
+    - could you tell me about [nostro reconciliation]{"entity": "attr", "value": "Nostro Reconciliation"}?
+- intent: differences_questions
+  examples: |
+    - what is the difference between [Onus transaction and Offus transaction](diff)
+    - Diffences between [onus transaction and offus transaction](diff)
+    - What are the differences in [Onus Transaction and Offus Transaction](diff)
+    - Tell me the difference between [Onus transaction and Offus transaction](diff)
+    - [Onus and Offus Transaction](diff)
+    - [onus and offus transaction](diff)
+    - [Onus and Offus transaction](diff)
+    - [Onus transactions and Offus transactions](diff)
+    - [Onus Transactions and Offus Transactions](diff)
+    - [onus transactions and offus transactions](diff)
+    - [Onus and Offus Transactions](diff)
+    - [onus and offus transactions](diff)
+    - [Onus and Offus transactions](diff)
+    - [onus and offus](diff)
+    - [Onus and Offus](diff)
+    - [onus and offus]{"entity": "diff", "value": "Onus transaction and Offus transaction"}
+- intent: system_features
+  examples: |
+    - what can admin do?
+    - What can admin user do?
+    - what are the roles of admin?
+    - tell me what admin can do?
+    - what access do admin have?
+    - What are admins capable of?
+    - what is admin capable of?
+- intent: setup_module
+  examples: |
+    - i want to setup [Transaction data source](setup)
+    - what is the process to setup [Reconciliation category](setup)
+    - Tell about [reconciliation category](setup) setup
+    - what can user setup in [Reconciliation type](setup)
+    - what are the [transaction data source](setup) user can setup?
+    - what sort of [Transaction source](setup) can be setup?
+    - what can we setup in [transaction source](setup)?
+    - tell me about [reconciliation type](setup) setup
+    - what are the options available for [reconciliation category](setup) setup?
+    - available options for [Transaction data source](setup) setup
+    - what can user do with [transaction data source](setup)
+    - [Transaction data source](setup) setup
+    - [Reconciliation category](setup) setup
+    - setup [transaction source]{"entity": "setup", "value": "Transaction data source"}
+    - processes to setup [reconciliation category]{"entity": "setup", "value": "Reconciliation category"}?
+- intent: reconciliation_data_source
+  examples: |
+    - Reconciliation data source setup
+    - what can user setup through reconciliation data source?
+    - what can be setup using reconciliation data source?
+    - what is reconciliation data source screen?
+    - tell me about reconciliation data source?
+    - Transaction data source required for each reconciiliation category can be setup through which screen?
+    - reconciliation data source
+- intent: reconciliation_field_comparison
+  examples: |
+    - Reconciliation field comparison
+    - What are required during reconciliation process?
+    - what can be configured during reconciliation process?
+    - what are required to be compared during reconciliation process?
+    - When user configures fields or columns of different data sources what are the things required to be compared?
+    - what can user configure when comparing with reconciliation process?
+    - required things for reconciliation processes
+- intent: Receivable_payable_setup
+  examples: |
+    - Receivable payable setup
+    - Why is Receivable payable setup screen required?
+    - Why do user need Receivable payable setup?
+- intent: bank_setup
+  examples: |
+    - Bank setup
+    - why is bank setup required?
+    - why do user need bank setup?
+    - why do we require bank setup?
+    - why do we need bank setup?
+    - what is the use of bank setup?
+    - bank setup is required for what purpose?
+- intent: RBB_branch_setup
+  examples: |
+    - RBB branch setup
+    - what branches of RBB is setup?
+- intent: Terminal_type_setup
+  examples: |
+    - Terminal Type setup
+    - How is transaction done through terminal setup?
+    - How transaction is performed in terminal setup?
+    - In terminal setup how is transaction done?
+- intent: vendor_setup
+  examples: |
+    - Vendor setup
+    - what type of vendor can be setup?
+    - what options are available to setup vendor?
+    - types of vendor to setup
+    - vendor setup
+- intent: merchant_setup
+  examples: |
+    - Merchant Setup
+    - what is merchant setup required for?
+    - In POS terminal type what is required?
+    - what requires Merchant setup?
+    - merchant setup
+- intent: terminal_setup
+  examples: |
+    - Terminal Setup
+    - what happens in terminal setup?
+    - what terminal setup does?
+    - what is termial setup?
+    - what terminal setup is about?
+    - what is setup for different RBB branch?
+    - terminal setup
+- intent: data_source_location
+  examples: |
+    - Data source file location
+    - Can user configure path location of different data sources files?
+    - what can user do with data sources files and folders?
+- intent: dynamic_file_field_select
+  examples: |
+    - Dynamic file field select
+    - what will be displayed during import?
+    - what will user map the columns of different data sources with?
+- intent: import_module
+  examples: |
+    - where do user extract data files or folders from?
+    - where do user upload data files from different transaction data sources?
+    - where are files from transaction data sources like CBS, EJ, Switch, VISA uploaded?
+    - from where do user extract data files of different transaction data sources?
+    - import module
+- intent: process_import_file
+  examples: |
+    - How do i import file or folder from different transaction data source?
+    - What are the process to import files from transaction data source?
+    - list the methods to import different data sources?
+- intent: reconciliation_module
+  examples: |
+    - Reconciliation module
+    - what user does with reconciliation module?
+    - what can be done with reconciliation module?
+    - what user does with reconciliation category?
+    - what type of reconciliation process does user carry out?
+    - what is reconciliation module?
+    - tell me about reconciliation module
+- intent: report_module
+  examples: |
+    - Report module
+    - what can user do with report module?
+    - what can be done with report module?
+    - what is report module?
+- intent: usermanagement_module
+  examples: |
+    - usermanagement_module
+    - what can admin user create?
+    - what can admin assign?
+    - what can admin user create and assign?
+    - tell me something about the usermanagement module?
+    - what do you know about usermanagement module?
+- synonym: Reconciliation system
+  examples: |
+    - reconciliation system
+    - Reconciliation System
+    - Reconciliation system
+- synonym: ATM Transaction Reconciliation
+  examples: |
+    - atm transaction reconciliation
+    - ATM Transaction Reconciliation
+    - ATM transaction reconciliation
+    - atm Transaction Reconciliation
+- synonym: Nostro Account
+  examples: |
+    - nostro account
+    - Nostro Account
+    - Nostro account
+- synonym: Nostro Reconciliation
+  examples: |
+    - nostro reconciliation
+    - Nostro reconciliation
+    - Nostro Reconciliation
+- synonym: Onus transaction and Offus transaction
+  examples: |
+    - onus and offus
+    - Onus transaction and Offus transaction
+    - Onus Transaction and Offus Transaction
+    - onus transaction and offus transaction
+    - Onus and Offus Transaction
+    - onus and offus transaction
+    - Onus and Offus transaction
+    - Onus transactions and Offus transactions
+    - Onus Transactions and Offus Transactions
+    - onus transactions and offus transactions
+    - Onus and Offus Transactions
+    - onus and offus transactions
+    - Onus and Offus transactions
+    - Onus and Offus
+- synonym: Transaction data source
+  examples: |
+    - transaction source
+    - Transaction data source
+    - transaction data source
+    - Transaction source
+- synonym: Reconciliation category
+  examples: |
+    - reconciliation category
+    - Reconciliation category
+    - Reconciliation type
+    - reconciliation type

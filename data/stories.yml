@@ -1,135 +1,171 @@
 version: "2.0"
 
 stories:
+  - story: interactive_story_1
+    steps:
+      - intent: greeting
+      - action: action_greeting
 
-- story: Greet Story
-  steps:
-  - intent: greeting
-  - action: action_greeting
+  - story: interactive_story_2
+    steps:
+      - intent: after_greet
+      - action: action_after_greet
 
-- story: Goodbye Story
-  steps:
-  - intent: goodbye
-  - action: action_goodbye
-  
-- story: story2
-  steps:
-  - intent: out_of_scope
-  - action: action_out_of_scope
+  - story: interactive_story_1
+    steps:
+      - intent: affirm
+      - action: action_after_affirm
 
-- story: interactive_story_1
-  steps:
-  - intent: register_customer
-  - action: action_register_customer
+  - story: interactive_story_2
+    steps:
+      - intent: deny
+      - action: action_after_deny
 
-- story: interactive_story_2
-  steps:
-  - intent: change_pin_mobile_number
-    entities:
-    - feature: pin
-  - action: action_change_pin_mobile_number
+  - story: interactive_story_3
+    steps:
+      - intent: goodbye
+      - action: action_goodbye
 
-- story: interactive_story_3
-  steps:
-  - intent: change_pin_mobile_number
-    entities:
-    - feature: mobile
-  - action: action_change_pin_mobile_number
+  - story: interactive_story_1
+    steps:
+      - intent: about_bot
+      - action: action_about
 
-- story: interactive_story_4
-  steps:
-  - intent: transaction_from_mobile
-  - action: action_transaction_from_mobile
+  - story: interactive_story_1
+    steps:
+      - intent: out_of_scope
+      - action: action_out_of_scope
 
-- story: interactive_story_5
-  steps:
-  - intent: close_mobile_banking_service
-  - action: action_close_mobile_banking_service
+  - story: interactive_story_2
+    steps:
+      - intent: what_is
+        entities:
+          - attr: Reconciliation system
+      - action: action_what_is
 
-- story: interactive_story_6
-  steps:
-  - intent: send_bulk_message
-  - action: action_send_bulk_message
+  - story: interactive_story_3
+    steps:
+      - intent: what_is
+        entities:
+          - attr: ATM Transaction Reconciliation
+      - action: action_what_is
 
-- story: interactive_story_7
-  steps:
-  - intent: compose_features
-    entities:
-    - feature: news
-  - action: action_compose_features
+  - story: interactive_story_4
+    steps:
+      - intent: what_is
+        entities:
+          - attr: Nostro Account
+      - action: action_what_is
 
-- story: interactive_story_8
-  steps:
-  - intent: compose_features
-    entities:
-    - feature: events
-    - feature: news
-  - action: action_compose_features
+  - story: interactive_story_5
+    steps:
+      - intent: what_is
+        entities:
+          - attr: Nostro Reconciliation
+      - action: action_what_is
 
-- story: interactive_story_9
-  steps:
-  - intent: compose_features
-    entities:
-    - feature: advertisement
-  - action: action_compose_features
+  - story: interactive_story_1
+    steps:
+      - intent: differences_questions
+        entities:
+          - diff: Onus transaction and Offus transaction
+      - action: action_differences_questions
 
-- story: interactive_story_10
-  steps:
-  - intent: compose_message
-    entities:
-    - feature: mobile
-  - action: action_compose_message
+  - story: interactive_story_2
+    steps:
+      - intent: system_features
+      - action: action_system_features
 
-- story: interactive_story_11
-  steps:
-  - intent: compose_message
-    entities:
-    - feature: login
-  - action: action_compose_message
+  - story: interactive_story_1
+    steps:
+      - intent: setup_module
+        entities:
+          - setup: Transaction data source
+      - action: action_setup_module
 
-- story: interactive_story_12
-  steps:
-  - intent: settle_commission_infodevelopers
-  - action: action_settle_commission_infodevelopers
+  - story: interactive_story_2
+    steps:
+      - intent: setup_module
+        entities:
+          - setup: Reconciliation category
+      - action: action_setup_module
 
-- story: interactive_story_13
-  steps:
-  - intent: approve_pin_request
-    entities:
-    - feature: pin
-  - action: action_approve_pin_request
+  - story: interactive_story_3
+    steps:
+      - intent: reconciliation_data_source
+      - action: action_reconciliation_data_source
 
-- story: interactive_story_14
-  steps:
-  - intent: publish_document
-  - action: action_publish_document
+  - story: interactive_story_4
+    steps:
+      - intent: reconciliation_field_comparison
+      - action: action_reconciliation_field_comparision
 
-- story: interactive_story_15
-  steps:
-  - intent: limit_inter_bank_transfer
-  - action: action_limit_inter_bank_transfer
+  - story: interactive_story_1
+    steps:
+      - intent: Receivable_payable_setup
+      - action: action_reconciliation_payable_setup
 
-- story: interactive_story_16
-  steps:
-  - intent: verify_commission_amount
-  - action: action_verify_commission_amount
+  - story: interactive_story_2
+    steps:
+      - intent: bank_setup
+      - action: action_bank_setup
 
-- story: interactive_story_1
-  steps:
-  - intent: after_greet
-  - action: action_after_greet
+  - story: interactive_story_3
+    steps:
+      - intent: RBB_branch_setup
+      - action: action_RBB_branch_setup
 
-- story: interactive_story_2
-  steps:
-  - intent: affirm
-  - action: action_after_affirm
+  - story: interactive_story_4
+    steps:
+      - intent: Terminal_type_setup
+      - action: action_Terminal_type_setup
 
-- story: interactive_story_3
-  steps:
-  - intent: deny
-  - action: action_after_deny
+  - story: interactive_story_5
+    steps:
+      - intent: vendor_setup
+      - action: action_vendor_setup
 
-- story: interactive_story_4
-  steps:
-  - intent: about_bot
-  - action: action_about
+  - story: interactive_story_6
+    steps:
+      - intent: merchant_setup
+      - action: action_merchant_setup
+
+  - story: interactive_story_1
+    steps:
+      - intent: terminal_setup
+      - action: action_terminal_setup
+
+  - story: interactive_story_2
+    steps:
+      - intent: data_source_location
+      - action: action_data_source_location
+
+  - story: interactive_story_3
+    steps:
+      - intent: dynamic_file_field_select
+      - action: action_dynamic_file_field_select
+
+  - story: interactive_story_4
+    steps:
+      - intent: import_module
+      - action: action_import_module
+
+  - story: interactive_story_5
+    steps:
+      - intent: process_import_file
+      - action: action_process_import_file
+
+  - story: interactive_story_6
+    steps:
+      - intent: reconciliation_module
+      - action: action_reconciliation_module
+
+  - story: interactive_story_7
+    steps:
+      - intent: report_module
+      - action: action_report_module
+
+  - story: interactive_story_8
+    steps:
+      - intent: usermanagement_module
+      - action: action_usermanagement_module
