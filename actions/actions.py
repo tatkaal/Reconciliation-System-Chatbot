@@ -14,14 +14,19 @@ import base64
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
+from langdetect import detect
 
 class About(Action):
 	def name(self):
 		return "action_about"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ['I am a chatbot. I am here to help you.',
-					'I am your virtual assistant to guide you through this app.']
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+			messages = ['म च्याटबट हुँ। मैले तपाईंलाई मदत गर्न यहाँ छु।','यस अनुप्रयोग मार्फत मार्गदर्शन गर्न म तपाईंको भर्चुअल सहायक हुँ।']
+		else:
+			messages = ['I am a chatbot. I am here to help you.',
+						'I am your virtual assistant to guide you through this app.']
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -37,8 +42,12 @@ class OutOfScope(Action):
 		return "action_out_of_scope"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
-				"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ["माफ गर्नुहोस्, मैले तपाईंलाई बुझ्न सक्दिन के तपाई यसलाई फेरि दोहोर्याउन सक्नुहुन्छ?", "म यसलाई बुझ्न सक्दिन, कृपया तपाईले यसलाई दोहोर्याउनुहुन्छ?", "मैले यो एकदम अस्पष्ट पाए। के तपाई मलाई फेरि केहि स्पष्ट बताउन सक्नुहुन्छ? 🧐"]
+		else:
+			messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
+					"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -54,8 +63,12 @@ class ActionDefaultFallback(Action):
 		return "action_handle_fallback"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
-				"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ["माफ गर्नुहोस्, म तपाईंलाई बुझ्न सक्दिन के तपाई यसलाई फेरि दोहोर्याउन सक्नुहुन्छ?", "म यसलाई बुझ्न सक्दिन, कृपया तपाईले यसलाई दोहोर्याउनुहुन्छ?", "मैले यो एकदम अस्पष्ट पाए। के तपाई मलाई फेरि केहि स्पष्ट बताउन सक्नुहुन्छ? 🧐"]
+		else:
+			messages = ["Sorry 😕, I cannot understand you. Could you repeat it again?", "I am having confusion in understanding it 🧐. Would you repeat it please?",
+					"I find it quite ambiguous. 😕 Can you tell me again a bit clearly? 🧐"]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -71,8 +84,12 @@ class Greeting(Action):
 		return "action_greeting"
 	
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ["Hi there. It's such a pleasure to have you here 🤗. How can I help you.",
-					"Hello 👋😃 How can I assist you."]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ["नमस्ते। तपाईलाई यहाँ पाउँदा खुसी लाग्यो 🤗 म तपाईलाई कसरी मद्दत गर्न सक्छु।","नमस्कार 👋😃 म कसरी मद्दत गर्न सक्छु।"]
+		else:
+			messages = ["Hi there. It's such a pleasure to have you here 🤗. How can I help you.",
+						"Hello 👋😃 How can I assist you."]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -88,8 +105,12 @@ class AfterGreeting(Action):
 		return "action_after_greet"
 	
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ["I am fine. 🤟😎🤟",
-					"Better than ever 😎"]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ["म ठिक छु। 🤟😎🤟", "पहिलेभन्दा राम्रो"]
+		else:
+			messages = ["I am fine. 🤟😎🤟",
+						"Better than ever 😎"]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -105,8 +126,12 @@ class Goodbye(Action):
 		return "action_goodbye"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ['Thank you, I am happy to help you 😎',
-					'I hope I was helpful for you 🤗']
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ['धन्यबाद, म तपाईंलाई सहयोग गर्न खुसी छु 😎', 'मलाई आशा छ कि म तपाईंको लागि सहयोगी थिए 🤗']
+		else:
+			messages = ['Thank you, I am happy to help you 😎',
+						'I hope I was helpful for you 🤗']
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -122,8 +147,11 @@ class ActionAfterAffirm(Action):
 		return "action_after_affirm"
 
 	def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-		messages = ["Yes, it is."]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ['तपाईं ठिक हुनुहुन्छ']
+		else:
+			messages = ["Yes, it is."]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -139,7 +167,11 @@ class AfterNo(Action):
 		return "action_after_deny"
 	
 	def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-		messages = ["Ok sir. Are there any ways in which we can help you?","Ok sir. Is there anything more you want to know?"]
+		latest_msg = tracker.latest_message['text']
+		if(detect(latest_msg) in ['hi' ,'ne']):
+				messages = ["ठीक छ सर। के त्यहाँ कुनै उपायहरू छन् जुन हामी तपाईंलाई मद्दत गर्न सक्दछौं?", "ठीक छ सर। त्यहाँ केहि अरू पनि तपाईंले जान्न चाहानुहुन्छ?"]
+		else:
+			messages = ["Ok sir. Are there any ways in which we can help you?","Ok sir. Is there anything more you want to know?"]
 		reply = random.choice(messages)
 		attachment = {
 			"query_response": reply,
@@ -162,7 +194,11 @@ class IntroductionQA(Action):
 		print (f"The entities are: {entity_list}")
 		try:
 			if 'Reconciliation system' in entity_list:
-				message = "Reconciliation is an accounting process that compares two or more sets of records to identify whether those figures are correct and in agreement or not. It is particularly useful for explaining the difference between two or more sets of financial records or account balances. To facilitate the comparison of such transactions basically done daily and suggest the matched and unmatched transactions, the Comprehensive Reconciliation System (CRS) has been introduced."
+				latest_msg = tracker.latest_message['text']
+				if(detect(latest_msg) in ['hi' ,'ne']):
+						messages = ''
+				else:
+					message = "Reconciliation is an accounting process that compares two or more sets of records to identify whether those figures are correct and in agreement or not. It is particularly useful for explaining the difference between two or more sets of financial records or account balances. To facilitate the comparison of such transactions basically done daily and suggest the matched and unmatched transactions, the Comprehensive Reconciliation System (CRS) has been introduced."
 
 			elif 'ATM Transaction Reconciliation' in entity_list:
 				message = "ATM reconciliation is required to know the difference between ATM balance as per book and as per actual. Moreover to find the reasons of this difference and supply new cash in ATM for smooth customers' transactions.It also enables real-time representation of transactions in a bank’s balance sheets for audits and faster fraud detection and refund in case of technical machine problems."
@@ -473,7 +509,7 @@ class process_import_file(Action):
 		return "action_process_import_file"
 
 	def run(self, dispatcher: CollectingDispatcher,tracker:Tracker,domain:Dict[Text,Any]) -> List[Dict[Text, Any]]:
-		message = "1. At first go to the transaction data source file location screen and configure path for various data sources \n\n2.Now go to import screen of each data source and click import button"
+		message = "1. At first go to the transaction data source file location screen and configure path for various data sources <br><br>2.Now go to import screen of each data source and click import button"
 		attachment = {
 			"query_response": message,
 			"data":[],

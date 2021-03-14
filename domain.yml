@@ -3,7 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- dynamic_file_field_select
+- dynamic_file_field_selecthttps://github.com/bipinkc19
 - data_source_location
 - terminal_setup
 - reconciliation_module
@@ -19,7 +19,7 @@ intents:
 - merchant_setup
 - setup_module
 - reconciliation_data_source
-- reconciliation_field_comparison
+- reconciliation_field_comparisonbitch
 - differences_questions
 - system_features
 - out_of_scope
